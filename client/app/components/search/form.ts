@@ -13,7 +13,7 @@ import { SoundCloud } from '../../services/soundcloud';
             <div class="input-group">
               <input type="text" #searchvalue placeholder="Titre, Artiste ..." class="form-control">
               <span class="input-group-btn">
-                <input type="button" class="btn btn-default-full" type="button" (click)="trigger(searchvalue.value)" value="Rechercher" />
+                <input type="button" class="btn btn-primary-full" type="button" (click)="trigger(searchvalue.value)" value="Rechercher" />
               </span>
             </div>
         </form>

@@ -29,8 +29,11 @@ export class SoundCloud {
     }
 
     embed(track: Track) {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             SC.oEmbed(track.soundcloudUrl, { auto_play: false }, function(oEmbed: any) {
+                if (oEmbed === null) {
+                    reject();
+                }
                 resolve(oEmbed.html);
             });
         });

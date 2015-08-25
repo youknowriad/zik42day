@@ -1,4 +1,4 @@
-import { Component, View, NgIf } from 'angular2/angular2';
+import { Component, View } from 'angular2/angular2';
 import { Track } from '../../model/track';
 import { SoundCloud } from '../../services/soundcloud';
 
@@ -8,7 +8,7 @@ import { SoundCloud } from '../../services/soundcloud';
 })
 
 @View({
-    directives: [NgIf],
+    directives: [],
     template: `
         <div inner-html="{{ html }}" class="track-player"></div>
 	`
