@@ -1,0 +1,28 @@
+server:
+   build: ./server
+   dockerfile: docker/dev.dockerfile
+   links:
+       - mongo
+   volumes:
+       - ./server:/code
+   ports:
+       - "4444:4444"
+   expose:
+       - "4444"
+
+client:
+   build: ./client
+   dockerfile: docker/dev.dockerfile
+   links:
+       - server
+   volumes:
+       - ./client:/code
+   ports:
+       - "4443:4443"
+   expose:
+       - "4443"
+
+mongo:
+    image: mongo
+    ports:
+        - "27017:27017"

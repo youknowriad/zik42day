@@ -1,0 +1,54 @@
+.tracks {
+  overflow: hidden;
+
+  .track-thumbnail {
+    position: relative;
+    display: block;
+    float: left;
+    width: 33.33%;
+    max-height: 200px;
+    overflow: hidden;
+    padding: 0 2px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    .thumbnail {
+      height: 100%;
+    }
+
+    &:hover {
+      text-decoration: none;
+      .thumbnail {
+        background: #f3f3f3;
+      }
+    }
+
+    .track-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      height: 30px;
+    }
+
+    .track-description {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      height: 20px;
+    }
+
+    .track-player {
+      height: 100px;
+      overflow: hidden;
+    }
+  }
+
+  .track-resume {
+    border-bottom: 4px dashed #f3f3f3;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+}
