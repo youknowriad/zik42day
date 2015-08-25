@@ -25,6 +25,22 @@ module.exports = function (Q, TrackModel) {
             });
 
             return deferred.promise;
+        },
+
+        findForToday: function() {
+            var deferred = Q.defer();
+            var start = new Date();
+            start.setHours(0, 0, 0, 0);
+            var end = new Date();
+            end.setHours(23,59,59,99);
+            TrackModel.findOne({ date: {"$gte": start, "$lt": end}}, function (err, document) {
+                if (err) {
+                    return deferred.reject(err);
+                }
+                deferred.resolve(document);
+            });
+
+            return deferred.promise;
         }
     }
 };

@@ -11,6 +11,7 @@ module.exports = function(express, mongoose, middlewares, controllers, config) {
             });
             app.post('/track', controllers.trackController.createAction);
             app.get('/track', controllers.trackController.findAllAction);
+            app.get('/track/today', controllers.trackController.findForTodayAction);
 
             // Running
             mongoose.connect(config.db);
