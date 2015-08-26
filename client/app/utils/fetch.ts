@@ -1,9 +1,9 @@
 export function status(response: any) {
-    if (response.status >= 200 && response.status < 300) {
-        return Promise.resolve(response);
-    }
-    return response.text().then(function(text: any) {
-        throw new Error(text);
+    return new Promise((resolve, reject) => {
+        if (response.status >= 200 && response.status < 300) {
+            return resolve(response);
+        }
+        return reject(response);
     });
 }
 

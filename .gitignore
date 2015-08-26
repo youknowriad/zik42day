@@ -6,4 +6,3 @@ server/src/config/config.js.docker
 client/node_modules
 client/public
 client/typings/*
-!client/typings/tsd.d.ts

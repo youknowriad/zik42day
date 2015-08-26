@@ -1,4 +1,4 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../custom.d.ts" />
 
 import { bootstrap, bind } from 'angular2/angular2';
 import { routerInjectables, LocationStrategy, HashLocationStrategy } from 'angular2/router';
