@@ -34,7 +34,7 @@ import { FlashMessagesComponent } from './utils/flash-messages';
             <div class="container">
                 <div class="slogan">
                     <div class="center">
-                        <p>Que'est ce qu'on écoute aujourd'hui ?</p>
+                        <p>Qu'est-ce qu'on écoute aujourd'hui ?</p>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@ import { FlashMessagesComponent } from './utils/flash-messages';
 @RouteConfig([
     { path: '/',        redirectTo: '/today' },
     { path: '/search',  as: 'search',  component: Search },
-    { path: '/today',  as: 'today',  component: TrackToday },
+    { path: '/today',   as: 'today',   component: TrackToday },
     { path: '/history', as: 'history', component: TrackHistory }
 ])
 
