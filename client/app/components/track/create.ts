@@ -1,6 +1,7 @@
 import { Component, View, EventEmitter } from 'angular2/angular2';
 import { Track } from '../../model/track';
 import { TrackRepository } from '../../services/track-repository';
+import { FlashMessages } from '../../services/flash-messages';
 
 @Component({
     selector: 'track-create-form',
@@ -30,12 +31,14 @@ import { TrackRepository } from '../../services/track-repository';
 })
 
 export class TrackCreateForm {
-    track: Track;
     repository: TrackRepository;
+    flashMessages: FlashMessages;
+    track: Track;
     create: EventEmitter;
     cancel: EventEmitter;
-    constructor(repository: TrackRepository) {
+    constructor(repository: TrackRepository, flashMessages: FlashMessages) {
         this.repository = repository;
+        this.flashMessages = flashMessages;
         this.create = new EventEmitter();
         this.cancel = new EventEmitter();
     }
@@ -47,6 +50,9 @@ export class TrackCreateForm {
             this.create.next({
                 track: track
             });
+            this.flashMessages.push('Musique du jour publiée avec succès', 'success');
+        }).catch(() => {
+            this.flashMessages.push('Impossible de publier la musique du jour', 'danger');
         });
     }
 

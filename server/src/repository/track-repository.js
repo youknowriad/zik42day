@@ -3,6 +3,7 @@ module.exports = function (Q, TrackModel) {
     return {
         create: function(track) {
             var deferred = Q.defer();
+            track.date = new Date();
             var document = new TrackModel(track);
             document.save(function(err) {
                 if (err) {
@@ -17,12 +18,15 @@ module.exports = function (Q, TrackModel) {
         findAll: function(query) {
             var deferred = Q.defer();
             query = query || {};
-            TrackModel.find(query, function (err, data) {
-                if (err) {
-                    return deferred.reject(err);
-                }
-                return deferred.resolve(data);
-            });
+            TrackModel
+                .find(query)
+                .sort({ date: -1 })
+                .exec(function (err, data) {
+                    if (err) {
+                        return deferred.reject(err);
+                    }
+                    return deferred.resolve(data);
+                });
 
             return deferred.promise;
         },

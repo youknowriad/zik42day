@@ -51,6 +51,6 @@ export class Search {
     }
 
     created() {
-        this.router.navigate('/history');
+        this.router.navigate('/today');
     }
 }

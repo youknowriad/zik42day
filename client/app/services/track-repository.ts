@@ -33,4 +33,13 @@ export class TrackRepository {
             return tracks.map(data => this.serializer.unserialize(data));
         });
     }
+
+    findForToday() {
+        return window.fetch(API_URL + '/track/today', {
+            method: 'get',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(status).then(json).then((data: any) => this.serializer.unserialize(data));
+    }
 }
