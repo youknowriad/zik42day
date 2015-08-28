@@ -3,14 +3,14 @@ module.exports = function(trackRepository) {
     return {
         createAction: function(req, res) {
             return trackRepository.findForToday().then(function(track) {
-                if (!track) {
+            //    if (!track) {
                     return trackRepository.create(req.body)
                         .then(function(document) {
                             return res.send(document);
                         });
-                } else {
+             /*   } else {
                     return res.status(400).send({ status: 'error', message: 'there\'s already a track for today'});
-                }
+                }*/
 }           ).catch(function(error) {
                 return res.status(500).send({ status: 'error', message : 'insert error' });
             });

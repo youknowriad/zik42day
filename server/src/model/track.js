@@ -5,6 +5,7 @@ module.exports = function (mongoose) {
         description: String,
         soundcloudUrl: String,
         soundcloudId: Number,
+        spotifyId: String,
         date: { type: Date, default: Date.now }
     });
 

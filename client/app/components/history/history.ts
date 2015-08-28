@@ -33,4 +33,8 @@ export class TrackHistory {
     updateTracks(tracks: Array<Track>) {
         this.tracks = tracks;
     }
+
+    activate() {
+        console.log('on activate');
+    }
 }

@@ -53,6 +53,7 @@ export class TrackCreateForm {
             this.flashMessages.push('Musique du jour publiée avec succès', 'success');
         }).catch(() => {
             this.flashMessages.push('Impossible de publier la musique du jour', 'danger');
+            this.cancel.next(null);
         });
     }
 

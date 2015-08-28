@@ -1,10 +1,14 @@
 import { Component, View } from 'angular2/angular2';
 import { Track } from '../../model/track';
-import { SoundCloud } from '../../services/soundcloud';
+import { ZikService } from '../../services/zik-service';
 
 @Component({
     selector: 'track-player',
-    properties: ['track: track']
+    properties: [
+        'track: track',
+        'width: width',
+        'height: height'
+    ]
 })
 
 @View({
@@ -17,13 +21,13 @@ import { SoundCloud } from '../../services/soundcloud';
 export class TrackPlayer {
     track: Track;
     html: string = '';
-    constructor(soundCloud: SoundCloud) {
+    width: number = 320;
+    height: number = 200;
+    constructor(zikService: ZikService) {
         setTimeout(() => {
-            if (this.track.soundcloudUrl) {
-                soundCloud.embed(this.track).then((html: string) => {
-                    this.html = html;
-                });
-            }
+            zikService.embed(this.track, { width: this.width, height: this.height }).then((html: string) => {
+                this.html = html;
+            });
         }, 100);
     }
 }

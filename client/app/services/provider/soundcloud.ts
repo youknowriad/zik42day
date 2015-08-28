@@ -1,16 +1,11 @@
 import { SC } from 'soundcloud';
-import { Injectable } from 'angular2/angular2';
-import { TrackSerializer } from './track-serializer';
-import { Track } from '../model/track';
+import { Track } from '../../model/track';
+import { ZikProvider } from './zik-provider';
 
 const APP_ID = '928f0a508e13315a84bee18862866d0f';
-const APP_SECRET = 'cf8fb2922224e03aee902b50d312b232';
 
-@Injectable()
-export class SoundCloud {
-    serializer: TrackSerializer;
-    constructor(serializer: TrackSerializer) {
-        this.serializer = serializer;
+export class SoundCloudProvider implements ZikProvider {
+    constructor() {
         SC.initialize({
             client_id: APP_ID
         });
@@ -22,20 +17,28 @@ export class SoundCloud {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(tracks.map(track => this.serializer.createFromSoundCloud(track)));
+                    resolve(tracks.map(track => this.getTrack(track)));
                 }
             });
         });
     }
 
-    embed(track: Track) {
+    embed(track: Track, options = { width: 320, height: 200 }) {
         return new Promise((resolve, reject) => {
-            SC.oEmbed(track.soundcloudUrl, { auto_play: false }, function(oEmbed: any) {
+            SC.oEmbed(track.soundcloudUrl, { auto_play: false, maxheight: options.height }, function(oEmbed: any) {
                 if (oEmbed === null) {
                     reject();
                 }
                 resolve(oEmbed.html);
             });
         });
+    }
+
+    getTrack(data: any) {
+        return new Track(
+            null, null,
+            data.title, data.description, data.artwork_url ? data.artwork_url : null,
+            data.id, data.uri
+        );
     }
 }

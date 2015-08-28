@@ -5,7 +5,7 @@ import { Message } from '../model/message';
 export class FlashMessages {
     messages: Array<Message> = [];
 
-    push(content: string, type: string = 'info', ttl: Number = 6000) {
+    push(content: string, type: string = 'info', ttl: number = 6000) {
         let message = new Message(content, type);
         this.messages.push(message);
         setTimeout(() => {

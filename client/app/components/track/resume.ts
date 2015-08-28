@@ -18,7 +18,7 @@ import { TrackPlayer } from './player';
                 <p class="track-description"><small>{{ track.description }}</small></p>
             </div>
 
-            <track-player [track]="track"></track-player>
+            <track-player [track]="track" [height]="400" [width]="1000"></track-player>
         </div>
 	`
 })
