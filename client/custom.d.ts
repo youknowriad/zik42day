@@ -5,7 +5,6 @@
 /// <reference path="typings/rx/rx.d.ts" />
 /// <reference path="typings/whatwg-fetch/whatwg-fetch.d.ts" />
 
-
 declare module SoundCloud {
     export var SC: any;
 }

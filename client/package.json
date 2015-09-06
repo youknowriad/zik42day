@@ -4,7 +4,7 @@
   "description": "",
   "license": "MIT",
   "dependencies": {
-    "angular2": "2.0.0-alpha.35",
+    "angular2": "2.0.0-alpha.36",
     "kickevent-ui": "git+https://github.com/kickevent/ui.git#master"
   },
   "devDependencies": {
